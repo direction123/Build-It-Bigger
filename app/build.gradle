@@ -22,21 +22,26 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile project(':jokelib')
-    compile project(':jokedisplay')
     compile 'com.android.support:appcompat-v7:25.3.1'
+    // Added for jokelib
+    compile project(':jokelib')
+    // Added for jokedisplay
+    compile project(':jokedisplay')
+    // Added for AdMob
     compile 'com.google.android.gms:play-services-ads:11.0.4'
-    compile 'com.google.code.findbugs:jsr305:2.0.1'
+    // Added for google cloud endpoint backend
     compile project(path: ':backend', configuration: 'android-endpoints')
-
-    //https://stackoverflow.com/questions/24454948/android-studio-with-appengine-gradle-dependencies
+    // Added for google api
+    // (https://stackoverflow.com/questions/24454948/android-studio-with-appengine-gradle-dependencies)
     compile ('com.google.api-client:google-api-client-android:1.17.0-rc') {
         exclude module: 'httpclient'
     }
     compile ('com.google.http-client:google-http-client-gson:1.17.0-rc') {
         exclude module: 'httpclient'
     }
+    // Added for Testing Support Library
+    androidTestCompile('com.android.support.test:runner:0.4', {
+        //Solve conflict with dependency "versions for app and test app differ"
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 }
