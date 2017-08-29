@@ -3,6 +3,7 @@ package com.udacity.gradle.builditbigger;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.util.Pair;
 import android.widget.Toast;
 
@@ -21,10 +22,10 @@ import java.io.IOException;
 
 class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
     private static MyApi myApiService = null;
-    private Context mContext;
+    private MainActivity.ButtonClickHandler mButtonClick;
 
-    public EndpointsAsyncTask(Context context) {
-        this.mContext = context;
+    public EndpointsAsyncTask(MainActivity.ButtonClickHandler buttonClick) {
+        this.mButtonClick = buttonClick;
     }
 
     @Override
@@ -56,8 +57,7 @@ class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Intent intent = new Intent(mContext, JokeActivity.class);
-        intent.putExtra(JokeActivity.JOKE_KEY, result);
-        mContext.startActivity(intent);
+       // Log.v("xx", result);
+        mButtonClick.onClick(result);
     }
 }

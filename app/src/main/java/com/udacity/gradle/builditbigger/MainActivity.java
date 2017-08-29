@@ -17,6 +17,10 @@ import direction123.jokedisplay.JokeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    public interface ButtonClickHandler {
+        void onClick(String result);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
