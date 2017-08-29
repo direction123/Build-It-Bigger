@@ -7,7 +7,7 @@ public class JokeProvider {
     };
 
     public static String getJoke() {
-      //  return jokes[0];
-        return "";
+        return jokes[0];
+      //  return "";
     }
 }
