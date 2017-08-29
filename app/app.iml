@@ -196,5 +196,11 @@
     <orderEntry type="module" module-name="jokedisplay" exported="" />
     <orderEntry type="module" module-name="backend" exported="" />
     <orderEntry type="module" module-name="jokelib" exported="" />
+    <orderEntry type="module" module-name="jokedisplay" exported="" />
+    <orderEntry type="module" module-name="backend" exported="" />
+    <orderEntry type="module" module-name="jokelib" exported="" />
+    <orderEntry type="module" module-name="jokedisplay" exported="" />
+    <orderEntry type="module" module-name="backend" exported="" />
+    <orderEntry type="module" module-name="jokelib" exported="" />
   </component>
 </module>
