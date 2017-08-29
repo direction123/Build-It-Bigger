@@ -24,6 +24,8 @@ class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
     private static MyApi myApiService = null;
     private MainActivity.ButtonClickHandler mButtonClick;
 
+    public boolean testMode = false;
+
     public EndpointsAsyncTask(MainActivity.ButtonClickHandler buttonClick) {
         this.mButtonClick = buttonClick;
     }
@@ -57,7 +59,8 @@ class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-       // Log.v("xx", result);
-        mButtonClick.onClick(result);
+        if (!testMode) {
+            mButtonClick.onClick(result);
+        }
     }
 }
