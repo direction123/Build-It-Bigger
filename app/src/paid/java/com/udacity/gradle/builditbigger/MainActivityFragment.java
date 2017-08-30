@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import direction123.jokedisplay.JokeActivity;
 
@@ -14,6 +15,8 @@ import direction123.jokedisplay.JokeActivity;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment implements MainActivity.ButtonClickHandler {
+    ProgressBar mProgressBar;
+    Button mButton;
 
     public MainActivityFragment() {
     }
@@ -23,7 +26,7 @@ public class MainActivityFragment extends Fragment implements MainActivity.Butto
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
-        Button mButton = (Button) root.findViewById(R.id.button_paid);
+        mButton = (Button) root.findViewById(R.id.button_paid);
         mButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -32,6 +35,8 @@ public class MainActivityFragment extends Fragment implements MainActivity.Butto
                 loadJokes();
             }
         });
+
+        mProgressBar = (ProgressBar) root.findViewById(R.id.progress_bar);
 
         return root;
     }
@@ -44,6 +49,6 @@ public class MainActivityFragment extends Fragment implements MainActivity.Butto
     }
 
     public void loadJokes() {
-        new EndpointsAsyncTask(this).execute();
+        new EndpointsAsyncTask(this, mProgressBar).execute();
     }
 }

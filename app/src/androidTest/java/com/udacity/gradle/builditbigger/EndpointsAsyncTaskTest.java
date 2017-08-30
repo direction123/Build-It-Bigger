@@ -28,7 +28,7 @@ public class EndpointsAsyncTaskTest {
 
         try {
             MainActivityFragment mainActivityFragment = new MainActivityFragment();
-            EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask(mainActivityFragment);
+            EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask(mainActivityFragment, null);
             endpointsAsyncTask.testMode = true;
             endpointsAsyncTask.execute();
             result = endpointsAsyncTask.get();

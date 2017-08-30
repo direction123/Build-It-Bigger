@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -20,6 +21,8 @@ import direction123.jokedisplay.JokeActivity;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment implements MainActivity.ButtonClickHandler {
+    ProgressBar mProgressBar;
+    Button mButton;
 
     public MainActivityFragment() {
     }
@@ -38,7 +41,7 @@ public class MainActivityFragment extends Fragment implements MainActivity.Butto
                 .build();
         mAdView.loadAd(adRequest);
 
-        Button mButton = (Button) root.findViewById(R.id.button_free);
+        mButton = (Button) root.findViewById(R.id.button_free);
         mButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -47,6 +50,8 @@ public class MainActivityFragment extends Fragment implements MainActivity.Butto
                 loadJokes();
             }
         });
+
+        mProgressBar = (ProgressBar) root.findViewById(R.id.progress_bar);
 
         return root;
     }
@@ -59,6 +64,6 @@ public class MainActivityFragment extends Fragment implements MainActivity.Butto
     }
 
     public void loadJokes() {
-        new EndpointsAsyncTask(this).execute();
+        new EndpointsAsyncTask(this, mProgressBar).execute();
     }
 }

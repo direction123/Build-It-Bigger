@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.util.Pair;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -23,11 +25,23 @@ import java.io.IOException;
 class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
     private static MyApi myApiService = null;
     private MainActivity.ButtonClickHandler mButtonClick;
+    private ProgressBar mProgressBar;
 
     public boolean testMode = false;
 
-    public EndpointsAsyncTask(MainActivity.ButtonClickHandler buttonClick) {
+    public EndpointsAsyncTask(MainActivity.ButtonClickHandler buttonClick, ProgressBar progressBar) {
         this.mButtonClick = buttonClick;
+        this.mProgressBar = progressBar;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        if (!testMode) {
+            if (mProgressBar != null) {
+                mProgressBar.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     @Override
@@ -60,6 +74,7 @@ class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         if (!testMode) {
+            mProgressBar.setVisibility(View.INVISIBLE);
             mButtonClick.onClick(result);
         }
     }
