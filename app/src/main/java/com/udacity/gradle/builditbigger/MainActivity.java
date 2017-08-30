@@ -1,20 +1,13 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import com.example.JokeProvider;
-
-import direction123.jokedisplay.JokeActivity;
 
 
+//Thanks to Letellier's tutorial for creating the java library, the Android library and GCE.
+//http://fredericletellier.com/udacity-builditbigger/
 public class MainActivity extends AppCompatActivity {
 
     public interface ButtonClickHandler {
